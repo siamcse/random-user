@@ -2,7 +2,7 @@ import { faCalendarDays, faEnvelope, faUser } from '@fortawesome/free-regular-sv
 import { faMapLocation, faPhone, faUnlockKeyhole } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const UserInfo = () => {
     const { data, isLoading } = useQuery({
@@ -15,7 +15,7 @@ const UserInfo = () => {
         refetchOnWindowFocus: false,
     });
 
-    console.log(data);
+    console.log(data?.name.first);
     const [info, setInfo] = useState(
         <div className='text-center'>
             <p>Hi, My name is</p>
@@ -23,9 +23,8 @@ const UserInfo = () => {
         </div>
     );
 
-
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center mb-10'>
             <div className='-mt-48 bottom-0 left-1/4 mx-auto'>
                 <div className='w-[730px] h-[400px] bg-white shadow-lg'>
                     <div className='flex flex-col justify-center items-center pt-5'>
@@ -48,7 +47,7 @@ const UserInfo = () => {
                                 <p>Hi, My name is</p>
                                 <h1 className='text-4xl'>{data?.name.first} {data?.name.last}</h1>
                             </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faUser} />
                         </p>
                         <p
@@ -56,35 +55,35 @@ const UserInfo = () => {
                                 <p>Hi, My email address is</p>
                                 <h1 className='text-4xl'>{data?.email}</h1>
                             </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faEnvelope} />
                         </p>
                         <p onMouseEnter={() => setInfo(<div className='text-center'>
                             <p>Hi, My birthday is</p>
                             <h1 className='text-4xl'>{data?.dob.date}</h1>
                         </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faCalendarDays} />
                         </p>
                         <p onMouseEnter={() => setInfo(<div className='text-center'>
                             <p>Hi, My address is</p>
                             <h1 className='text-4xl'>{data?.location.street.number} {data?.location.street.name}</h1>
                         </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faMapLocation} />
                         </p>
                         <p onMouseEnter={() => setInfo(<div className='text-center'>
                             <p>Hi, My phone number is</p>
                             <h1 className='text-4xl'>{data?.phone}</h1>
                         </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faPhone} />
                         </p>
                         <p onMouseEnter={() => setInfo(<div className='text-center'>
                             <p>Hi, My password is</p>
                             <h1 className='text-4xl'>{data?.login.password}</h1>
                         </div>)}
-                            className='text-3xl text-slate-500'>
+                            className='text-3xl text-slate-500  duration-500  hover:text-black'>
                             <FontAwesomeIcon icon={faUnlockKeyhole} />
                         </p>
                     </div>
