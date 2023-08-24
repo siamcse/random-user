@@ -12,6 +12,7 @@ const UserInfo = () => {
             const data = await res.json();
             return data.results[0];
         },
+        refetchOnWindowFocus: false,
     });
 
     console.log(data);
