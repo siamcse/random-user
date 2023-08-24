@@ -5,7 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 
 const UserInfo = () => {
-    
+    const { data, isLoading } = useQuery({
+        queryKey: ['api'],
+        queryFn: async () => {
+            const res = await fetch('https://randomuser.me/api/');
+            const data = await res.json();
+            return data.results[0];
+        },
+    });
 
     console.log(data);
     const [info, setInfo] = useState(
